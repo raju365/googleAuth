@@ -43,45 +43,81 @@ Navigate to the Google Cloud Console and sign in with your Google account.
 
 ```text
 http://localhost:3000/auth/google/callback
+```
 
-5. Click "Create".
-6. Note down the Client ID and Client Secret displayed.
-Step 2: Initialize the Node.js Project
-Create a New Directory for Your Project
+5. Click **"Create"**.
+6. Note down the **Client ID** and **Client Secret** displayed.
+
+---
+
+## Step 2: Initialize the Node.js Project
+
+### Create a New Directory for Your Project
+
 Open your terminal or command prompt and run:
+
+```bash
 mkdir google-auth-jwt
 cd google-auth-jwt
+```
 
-Initialize the Project
+### Initialize the Project
+
 Initialize a new Node.js project:
+
+```bash
 npm init -y
+```
 
-This will create a package.json file with default settings.
-Install Required Dependencies
+This will create a `package.json` file with default settings.
+
+### Install Required Dependencies
+
 Install the necessary packages:
-npm install express passport passport-google-oauth20 jsonwebtoken dotenv
 
-- express: Web framework for Node.js.
-- passport: Authentication middleware.
-- passport-google-oauth20: Google OAuth 2.0 strategy for Passport.
-- jsonwebtoken: Library to work with JSON Web Tokens.
-- dotenv: Loads environment variables from a .env file.
-Step 3: Configure Environment Variables
-Create a .env File
-In the root of your project directory, create a file named .env.
+```bash
+npm install express passport passport-google-oauth20 jsonwebtoken dotenv
+```
+
+- **express:** Web framework for Node.js.
+- **passport:** Authentication middleware.
+- **passport-google-oauth20:** Google OAuth 2.0 strategy for Passport.
+- **jsonwebtoken:** Library to work with JSON Web Tokens.
+- **dotenv:** Loads environment variables from a `.env` file.
+
+---
+
+## Step 3: Configure Environment Variables
+
+### Create a `.env` File
+
+In the root of your project directory, create a file named `.env`.
+
 Add the following lines, replacing the placeholders with your actual Google OAuth credentials and a secret key for JWT:
+
+```env
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 JWT_SECRET=your-jwt-secret
+```
 
-- GOOGLE_CLIENT_ID: Your Google OAuth Client ID.
-- GOOGLE_CLIENT_SECRET: Your Google OAuth Client Secret.
-- JWT_SECRET: A secret key for signing JWTs.
-Step 4: Set Up the Express Application
-Create the app.js File
-In your project directory, create a file named app.js.
-Import Required Modules and Configure Middleware
-Open app.js and add the following code:
+- **GOOGLE_CLIENT_ID:** Your Google OAuth Client ID.
+- **GOOGLE_CLIENT_SECRET:** Your Google OAuth Client Secret.
+- **JWT_SECRET:** A secret key for signing JWTs.
+
+---
+
+## Step 4: Set Up the Express Application
+
+### Create the `app.js` File
+
+In your project directory, create a file named `app.js`.
+
+### Import Required Modules and Configure Middleware
+
+Open `app.js` and add the following code:
+
+```js
 require("dotenv").config();
 const express = require("express");
 const passport = require("passport");
@@ -137,3 +173,4 @@ app.get(
     res.json({ token });
   }
 );
+```
